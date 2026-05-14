@@ -1,0 +1,116 @@
+[
+  {
+    "screenId": "6855b096bc8b4c37891f0302381700a3",
+    "title": "Game Board",
+    "componentName": "GameBoard",
+    "file": "src/screens/GameBoard.tsx",
+    "buttons": 2,
+    "inputs": 0,
+    "links": 4,
+    "actions": [
+      {
+        "id": "button-1-1",
+        "kind": "button",
+        "label": "Button 1",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      }
+    ]
+  },
+  {
+    "screenId": "12cc7f934b05421ba613b9aa53a97ec6",
+    "title": "Main Menu",
+    "componentName": "MainMenu",
+    "file": "src/screens/MainMenu.tsx",
+    "buttons": 3,
+    "inputs": 0,
+    "links": 0,
+    "actions": [
+      {
+        "id": "start-game-1",
+        "kind": "button",
+        "label": "Start Game",
+        "index": 0
+      },
+      {
+        "id": "controls-2",
+        "kind": "button",
+        "label": "Controls",
+        "index": 1
+      },
+      {
+        "id": "high-scores-3",
+        "kind": "button",
+        "label": "High Scores",
+        "index": 2
+      }
+    ]
+  },
+  {
+    "screenId": "9e23a04c1fd84484affb9399a0919fab",
+    "title": "Pause Overlay",
+    "componentName": "PauseOverlay",
+    "file": "src/screens/PauseOverlay.tsx",
+    "buttons": 3,
+    "inputs": 0,
+    "links": 0,
+    "actions": [
+      {
+        "id": "resume-1",
+        "kind": "button",
+        "label": "Resume",
+        "index": 0
+      },
+      {
+        "id": "restart-2",
+        "kind": "button",
+        "label": "Restart",
+        "index": 1
+      },
+      {
+        "id": "exit-to-menu-3",
+        "kind": "button",
+        "label": "Exit to Menu",
+        "index": 2
+      }
+    ]
+  },
+  {
+    "screenId": "8c3ace174a3b4ae683869af7816ca5bf",
+    "title": "Game Over",
+    "componentName": "GameOver",
+    "file": "src/screens/GameOver.tsx",
+    "buttons": 2,
+    "inputs": 0,
+    "links": 0,
+    "actions": [
+      {
+        "id": "play-again-1",
+        "kind": "button",
+        "label": "Play Again",
+        "index": 0
+      },
+      {
+        "id": "main-menu-2",
+        "kind": "button",
+        "label": "Main Menu",
+        "index": 1
+      }
+    ]
+  },
+  {
+    "screenId": "aa1966ad00774264a0741d0708bd036a",
+    "title": "Controls Help",
+    "componentName": "ControlsHelp",
+    "file": "src/screens/ControlsHelp.tsx",
+    "buttons": 0,
+    "inputs": 0,
+    "links": 8,
+    "actions": []
+  }
+]
