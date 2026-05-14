@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tetris Supervisor - Controls</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#92bad4",
+                      "surface-container-highest": "#303539",
+                      "on-background": "#dee3e8",
+                      "inverse-surface": "#dee3e8",
+                      "on-primary-fixed": "#001e2c",
+                      "primary-fixed": "#c4e7ff",
+                      "outline": "#87929a",
+                      "on-primary-fixed-variant": "#004c69",
+                      "on-surface-variant": "#bdc8d1",
+                      "on-error-container": "#ffdad6",
+                      "primary": "#8ed5ff",
+                      "surface-container": "#1b2024",
+                      "inverse-on-surface": "#2c3135",
+                      "on-secondary-fixed": "#001e2c",
+                      "primary-fixed-dim": "#7bd0ff",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "background": "#0f1418",
+                      "secondary": "#a4cce6",
+                      "on-secondary": "#023449",
+                      "on-tertiary-container": "#613b00",
+                      "secondary-fixed-dim": "#a4cce6",
+                      "tertiary-container": "#f1a02b",
+                      "on-tertiary": "#472a00",
+                      "outline-variant": "#3e484f",
+                      "surface": "#0f1418",
+                      "tertiary-fixed": "#ffddb8",
+                      "surface-container-lowest": "#0a0f12",
+                      "secondary-container": "#214b61",
+                      "inverse-primary": "#00668a",
+                      "on-primary-container": "#004965",
+                      "surface-container-high": "#252b2e",
+                      "error": "#ffb4ab",
+                      "surface-tint": "#7bd0ff",
+                      "surface-dim": "#0f1418",
+                      "on-error": "#690005",
+                      "surface-variant": "#303539",
+                      "surface-container-low": "#171c20",
+                      "tertiary": "#ffc176",
+                      "tertiary-fixed-dim": "#ffb960",
+                      "on-primary": "#00354a",
+                      "primary-container": "#38bdf8",
+                      "surface-bright": "#343a3e",
+                      "on-surface": "#dee3e8",
+                      "secondary-fixed": "#c4e7ff",
+                      "on-tertiary-fixed": "#2a1700",
+                      "error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#214b61"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "touch-target": "44px",
+                      "grid-gap": "2px",
+                      "container-max": "1200px",
+                      "cell-size": "32px",
+                      "panel-padding": "1.5rem"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Geist"
+                      ],
+                      "stats-number": [
+                              "Geist"
+                      ],
+                      "headline-sm": [
+                              "Space Grotesk"
+                      ],
+                      "label-sm": [
+                              "Geist"
+                      ],
+                      "display-lg": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "stats-number": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        }
+        .neon-box {
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+        }
+      </style>
+</head>
+<body class="bg-[#0F172A] text-on-surface h-screen w-screen overflow-hidden flex flex-col md:flex-row font-body-md">
+<!-- TopAppBar (Mobile & Global Anchor) -->
+<header class="w-full top-0 border-b border-outline-variant bg-background dark:bg-background text-primary dark:text-primary font-headline-sm text-headline-sm transition-colors duration-200 flex justify-between items-center px-panel-padding h-touch-target md:hidden z-20">
+<div class="font-display-lg text-display-lg text-primary uppercase tracking-tighter text-xl">Tetris Supervisor</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary-fixed cursor-pointer">settings</span>
+<span class="material-symbols-outlined text-primary cursor-pointer">help</span>
+</div>
+</header>
+<!-- SideNavBar (Desktop) -->
+<nav class="bg-surface-container dark:bg-surface-container text-primary font-body-md text-body-md h-full w-64 left-0 fixed border-r border-outline-variant transition-all duration-150 hidden md:flex flex-col py-panel-padding z-20">
+<div class="mb-8 px-4">
+<h1 class="font-headline-sm text-headline-sm text-primary uppercase tracking-wider mb-1">Tetris Supervisor</h1>
+<p class="text-on-surface-variant text-sm">Level 01</p>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">videogame_asset</span>
+<span>Play</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span>Leaderboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary font-bold border-r-2 border-primary bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">keyboard</span>
+<span>Controls</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors mt-auto" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 relative overflow-y-auto p-6 md:p-12 pb-24 md:pb-12 bg-[#0F172A]">
+<div class="max-w-4xl mx-auto">
+<header class="mb-10 text-center md:text-left">
+<h2 class="font-display-lg text-display-lg text-primary tracking-tighter mb-2 neon-glow uppercase">System Controls</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Master the interface. Precision timing and spatial awareness are critical for optimal line clears.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Keyboard Mapping -->
+<section class="bg-[#111827] border border-[#334155] rounded-xl p-8 neon-box">
+<h3 class="font-headline-sm text-headline-sm text-secondary mb-6 flex items-center gap-2 border-b border-[#334155] pb-4">
+<span class="material-symbols-outlined text-primary">keyboard</span>
+                        Keyboard Interface
+                    </h3>
+<div class="space-y-6">
+<div class="flex justify-between items-center group">
+<div class="flex gap-2">
+<div class="w-10 h-10 border border-[#334155] rounded bg-[#0f1418] flex items-center justify-center text-on-surface group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined">arrow_left</span>
+</div>
+<div class="w-10 h-10 border border-[#334155] rounded bg-[#0f1418] flex items-center justify-center text-on-surface group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined">arrow_right</span>
+</div>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">Move Tetromino</span>
+</div>
+<div class="flex justify-between items-center group">
+<div class="w-10 h-10 border border-[#334155] rounded bg-[#0f1418] flex items-center justify-center text-on-surface group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined">arrow_drop_up</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">Rotate Clockwise</span>
+</div>
+<div class="flex justify-between items-center group">
+<div class="w-10 h-10 border border-[#334155] rounded bg-[#0f1418] flex items-center justify-center text-on-surface group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined">arrow_drop_down</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">Soft Drop</span>
+</div>
+<div class="flex justify-between items-center group">
+<div class="h-10 px-8 border border-[#334155] rounded bg-[#0f1418] flex items-center justify-center text-on-surface font-label-sm text-label-sm tracking-widest group-hover:border-primary transition-colors min-w-[120px]">
+                                SPACE
+                            </div>
+<span class="font-body-md text-body-md text-primary font-bold">Hard Drop</span>
+</div>
+<div class="flex justify-between items-center group">
+<div class="w-10 h-10 border border-[#334155] rounded bg-[#0f1418] flex items-center justify-center text-on-surface font-label-sm text-label-sm group-hover:border-primary transition-colors">
+                                P
+                            </div>
+<span class="font-body-md text-body-md text-on-surface-variant">Pause Game</span>
+</div>
+<div class="flex justify-between items-center group">
+<div class="w-10 h-10 border border-[#334155] rounded bg-[#0f1418] flex items-center justify-center text-on-surface font-label-sm text-label-sm group-hover:border-primary transition-colors">
+                                C
+                            </div>
+<span class="font-body-md text-body-md text-on-surface-variant">Hold Piece</span>
+</div>
+</div>
+</section>
+<!-- Touch & Rules -->
+<div class="space-y-8">
+<section class="bg-[#111827] border border-[#334155] rounded-xl p-8">
+<h3 class="font-headline-sm text-headline-sm text-secondary mb-6 flex items-center gap-2 border-b border-[#334155] pb-4">
+<span class="material-symbols-outlined text-primary">touch_app</span>
+                            Touch Protocol
+                        </h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 border border-[#334155] rounded-lg bg-surface flex flex-col items-center text-center gap-3">
+<span class="material-symbols-outlined text-2xl text-on-surface-variant">swipe_left</span>
+<span class="font-label-sm text-label-sm text-on-surface">Swipe L/R to Move</span>
+</div>
+<div class="p-4 border border-[#334155] rounded-lg bg-surface flex flex-col items-center text-center gap-3">
+<span class="material-symbols-outlined text-2xl text-on-surface-variant">tap_and_play</span>
+<span class="font-label-sm text-label-sm text-on-surface">Tap to Rotate</span>
+</div>
+<div class="p-4 border border-[#334155] rounded-lg bg-surface flex flex-col items-center text-center gap-3">
+<span class="material-symbols-outlined text-2xl text-on-surface-variant">swipe_down</span>
+<span class="font-label-sm text-label-sm text-on-surface">Swipe Down to Drop</span>
+</div>
+<div class="p-4 border border-[#334155] rounded-lg bg-surface flex flex-col items-center text-center gap-3">
+<span class="material-symbols-outlined text-2xl text-on-surface-variant">swipe_up</span>
+<span class="font-label-sm text-label-sm text-on-surface">Swipe Up to Hold</span>
+</div>
+</div>
+</section>
+<section class="bg-[#111827] border border-[#334155] rounded-xl p-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl">grid_4x4</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-tertiary mb-4 relative z-10">Directives</h3>
+<ul class="space-y-3 font-body-md text-body-md text-on-surface-variant relative z-10">
+<li class="flex items-start gap-2">
+<span class="text-tertiary">01.</span>
+<span>Complete horizontal lines to clear blocks.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-tertiary">02.</span>
+<span>Clearing 4 lines simultaneously (a 'Tetris') yields maximum score.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-tertiary">03.</span>
+<span>Speed increases incrementally with each level advance.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-tertiary">04.</span>
+<span>If the stack reaches the upper boundary, sequence terminates.</span>
+</li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest text-primary font-label-sm text-label-sm fixed bottom-0 w-full z-50 border-t border-outline-variant scale-95 transition-transform duration-75 md:hidden flex justify-around items-center h-16 px-4">
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1">play_arrow</span>
+<span>Play</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1">query_stats</span>
+<span>Stats</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1" href="#">
+<span class="material-symbols-outlined mb-1">help_outline</span>
+<span>Guide</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1">menu</span>
+<span>Menu</span>
+</a>
+</nav>
+</body></html>
